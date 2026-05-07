@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CardAPiService } from '../card-api-service';
 
 @Component({
   selector: 'app-results-api',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './results-api.html',
   styleUrl: './results-api.css',
 })
-export class ResultsAPI {}
+export class ResultsAPI {
+  public _ResultsAPI = inject(CardAPiService);
+
+  constructor() {
+    this._ResultsAPI.getCards();
+  }
+}

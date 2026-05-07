@@ -1,1 +1,18 @@
-<p>results-api works!</p>
+<p class="results-count">Results: {{ _ResultsAPI.totalCards() }}</p>
+<div class="d-flex align-items-center justify-content-center gap-3 p-3" style="background-color: #0d1b2a;">
+<button class="btn-view" (click)="_ResultsAPI.prevPage()" [disabled]="_ResultsAPI.currentPage() === 0">Previous</button>
+<span class="results-count">Page {{ _ResultsAPI.currentPage() + 1 }} of {{ _ResultsAPI.totalPages() }}</span>
+<button class="btn-view" (click)="_ResultsAPI.nextPage()" [disabled]="_ResultsAPI.currentPage() >= _ResultsAPI.totalPages() - 1">Next</button>
+</div>
+
+<div class="cards-grid">
+@for (card of _ResultsAPI.cards(); track $index) {
+    <div class="card-item">
+        <img [src]="card.card_images[0].image_url_small" [alt]="card.name" />
+        <div class="card-overlay">
+            <h6>{{ card.name }}</h6>
+            <button class="btn-view">View Card</button>
+        </div>
+    </div>
+}
+</div>
