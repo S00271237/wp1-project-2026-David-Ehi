@@ -10,12 +10,20 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './search.css',
 })
 export class Search {
-    cards = inject(CardAPiService);
+  cards = inject(CardAPiService);
+  searchInput = '';
+  cardType = '';
 
   onSearch() {
-    const searchInput = (document.getElementById('searchInput') as HTMLInputElement).value.trim();
-    this.cards.cardname.set(searchInput);
+    let params = this.searchInput ? `fname=${encodeURIComponent(this.searchInput)}` : '';
+    if (this.cardType) {
+      if (params) {
+        params += '&type=' + this.cardType;
+      } else {
+        params = 'type=' + this.cardType;
+      }
+    }
     this.cards.currentPage.set(0);
-    this.cards.getCards(searchInput ? `fname=${encodeURIComponent(searchInput)}` : '');
+    this.cards.getCards(params);
 }
 }
