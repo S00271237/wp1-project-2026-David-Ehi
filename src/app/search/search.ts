@@ -13,6 +13,8 @@ export class Search {
   cards = inject(CardAPiService);
   searchInput = '';
   cardType = '';
+  atkValue: number | null = null;
+  defValue: number | null = null;
 
   onSearch() {
     let params = this.searchInput ? `fname=${encodeURIComponent(this.searchInput)}` : '';
@@ -22,6 +24,12 @@ export class Search {
       } else {
         params = 'type=' + this.cardType;
       }
+    }
+    if (this.atkValue !== null) {
+      params += params ? `&atk=${this.atkValue}` : `atk=${this.atkValue}`;
+    }
+    if (this.defValue !== null) {
+      params += params ? `&def=${this.defValue}` : `def=${this.defValue}`;
     }
     this.cards.currentPage.set(0);
     this.cards.getCards(params);
