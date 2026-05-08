@@ -10,7 +10,7 @@ export class CardAPiService {
   private _http = inject(HttpClient);
   public currentPage = signal<number>(0);
   public totalPages = signal<number>(0);
-  public pageSize = 20;
+  public pageSize = 14;
   public totalCards = signal<number>(0);
   private _apiUrl = 'https://db.ygoprodeck.com/api/v7/cardinfo.php';
 

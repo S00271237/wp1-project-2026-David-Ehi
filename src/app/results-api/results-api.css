@@ -1,0 +1,123 @@
+.results-bar {
+    background-color: #0d1b2a;
+    padding: 0.75rem 1rem;
+    color: #c9a84c;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.results-div {
+    background-color: #0d1b2a;
+    padding: 1rem;
+}
+
+.pagination-bar {
+    background-color: #0d1b2a;
+    padding: 1rem;
+    border-top: 1px solid #c9a84c33;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.page-info {
+    color: #c9a84c;
+    font-size: 0.9rem;
+    min-width: 120px;
+    text-align: center;
+}
+
+.btn-page {
+    background-color: transparent;
+    border: 1px solid #c9a84c;
+    color: #c9a84c;
+    padding: 0.4rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-page:hover:not(:disabled) {
+    background-color: #c9a84c;
+    color: #0d1b2a;
+    font-weight: bold;
+}
+
+.btn-page:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #0d1b2a;
+}
+
+.card-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #c9a84c55;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.card-item:hover {
+    border-color: #c9a84c;
+}
+
+.card-item img {
+    width: 100%;
+    display: block;
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(13, 27, 42, 0.92);
+    border-top: 1px solid #c9a84c;
+    padding: 0.75rem;
+    transform: translateY(100%);
+    transition: transform 0.25s ease;
+    text-align: center;
+}
+
+.card-item:hover .card-overlay {
+    transform: translateY(0);
+}
+
+.card-overlay h6 {
+    color: #c9a84c;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.btn-view {
+    background-color: #c9a84c;
+    color: #0d1b2a;
+    border: none;
+    font-weight: bold;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.9rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-view:hover {
+    background-color: #b8963e;
+}
+
+.results-count {
+    color: #c9a84c;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
