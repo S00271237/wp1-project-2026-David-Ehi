@@ -7,7 +7,7 @@
 <button class="btn-view" (click)="_ResultsAPI.nextPage()" [disabled]="_ResultsAPI.currentPage() >= _ResultsAPI.totalPages() - 1">Next</button>
 </div>
 
-<div class="cards-grid">
+<div class="cards-grid pb-5">
 @for (card of _ResultsAPI.cards(); track $index) {
     <div class="card-item">
         <img [src]="card.card_images[0].image_url_small" [alt]="card.name" />

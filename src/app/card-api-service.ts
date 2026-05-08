@@ -9,15 +9,20 @@ export class CardAPiService {
   public cards = signal<Card[]>([]);
   private _http = inject(HttpClient);
   public currentPage = signal<number>(0);
+  public cardname = signal<string>('');
   public totalPages = signal<number>(0);
   public pageSize = 14;
   public totalCards = signal<number>(0);
   private _apiUrl = 'https://db.ygoprodeck.com/api/v7/cardinfo.php';
 
 
+public currentParams = signal<string>('');
+
 getCards(params: string = '') {
+  this.currentParams.set(params);
   const offset = this.currentPage() * this.pageSize;
-  
+  const paramString = params ? `&${params}` : '';
+
   this._http
     .get<{ data: any[] }>(`${this._apiUrl}?${params}`)
     .subscribe((response) => {
@@ -26,23 +31,23 @@ getCards(params: string = '') {
     });
 
   this._http
-    .get<{ data: any[] }>(`${this._apiUrl}?num=${this.pageSize}&offset=${offset}${params}`)
+    .get<{ data: any[] }>(`${this._apiUrl}?num=${this.pageSize}&offset=${offset}${paramString}`)
     .subscribe((response) => {
       this.cards.set(response.data);
     });
 }
 
-  nextPage() {
-    this.currentPage.update((p) => p + 1);
-    this.getCards();
-  }
+nextPage() {
+  this.currentPage.update((p) => p + 1);
+  this.getCards(this.currentParams());
+}
 
-  prevPage() {
-    if (this.currentPage() > 0) {
-      this.currentPage.update((p) => p - 1);
-      this.getCards();
-    }
+prevPage() {
+  if (this.currentPage() > 0) {
+    this.currentPage.update((p) => p - 1);
+    this.getCards(this.currentParams());
   }
+}
 
 
 }
