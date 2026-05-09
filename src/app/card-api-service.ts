@@ -23,18 +23,25 @@ getCards(params: string = '') {
   const offset = this.currentPage() * this.pageSize;
   const paramString = params ? `&${params}` : '';
 
-  this._http
-    .get<{ data: any[] }>(`${this._apiUrl}?${params}`)
-    .subscribe((response) => {
+this._http
+  .get<{ data: any[] }>(`${this._apiUrl}?${params}`)
+  .subscribe({
+    next: (response) => {
       this.totalCards.set(response.data.length);
       this.totalPages.set(Math.ceil(response.data.length / this.pageSize));
-    });
+    },
+    error: () => { 
+      this.totalCards.set(0);
+      this.totalPages.set(0);
+    }
+  });
 
-  this._http
-    .get<{ data: any[] }>(`${this._apiUrl}?num=${this.pageSize}&offset=${offset}${paramString}`)
-    .subscribe((response) => {
-      this.cards.set(response.data);
-    });
+this._http
+  .get<{ data: any[] }>(`${this._apiUrl}?num=${this.pageSize}&offset=${offset}${paramString}`)
+  .subscribe({
+    next: (response) => this.cards.set(response.data),
+    error: () => this.cards.set([])
+  });
 }
 
 getCardById(id: number) {
