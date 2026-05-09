@@ -121,3 +121,9 @@
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
 }
+
+:host { /* This ensures the component takes up the full viewport height and applies the background color */
+    display: block;
+    background-color: #0d1b2a;
+    min-height: 100vh;
+}

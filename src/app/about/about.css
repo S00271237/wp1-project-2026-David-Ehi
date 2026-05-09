@@ -1,0 +1,10 @@
+.about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #0d1b2a;
+    color: #f0e8d0;
+    font-size: 1.5rem;
+    
+}

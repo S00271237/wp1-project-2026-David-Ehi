@@ -1,1 +1,17 @@
-<p>results-db works!</p>
+
+<div class="results-div justify-content-center align-items-center d-flex flex-column">
+<p class="results-bar">Your Deck ({{ _ResultsAPI.cards().length }} cards)</p>
+</div>
+
+<div class="cards-grid pb-5">
+@for (card of _ResultsAPI.cards(); track $index) {
+    <div class="card-item">
+        <img [src]="card.card_images[0].image_url_small" [alt]="card.name" />
+        <div class="card-overlay">
+            <h6>{{ card.name }}</h6>
+            <button class="btn-view" (click)="viewCard(card)">View Card</button>
+            <button class="btn-remove" (click)="removeCard(card)">Remove from Deck</button>
+        </div>
+    </div>
+}
+</div>
