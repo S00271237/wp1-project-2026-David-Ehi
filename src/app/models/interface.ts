@@ -10,6 +10,7 @@ export interface Card {
     race: string;
     attribute: string;
     card_images: CardImage[];
+    card_sets: CardSet[];
 }
 
 export interface CardImage {
@@ -17,4 +18,12 @@ export interface CardImage {
   image_url: string;
   image_url_small: string;
   image_url_cropped: string;
+}
+
+export interface CardSet {
+  set_name: string;
+  set_code: string;
+  set_rarity: string;
+  set_rarity_code: string;
+  set_price: string;
 }

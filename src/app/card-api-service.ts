@@ -37,6 +37,10 @@ getCards(params: string = '') {
     });
 }
 
+getCardById(id: number) {
+  return this._http.get<{ data: any[] }>(`${this._apiUrl}?id=${id}`);
+}
+
 nextPage() {
   this.currentPage.update((p) => p + 1);
   this.getCards(this.currentParams());

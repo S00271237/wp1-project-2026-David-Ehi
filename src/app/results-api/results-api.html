@@ -13,7 +13,7 @@
         <img [src]="card.card_images[0].image_url_small" [alt]="card.name" />
         <div class="card-overlay">
             <h6>{{ card.name }}</h6>
-            <button class="btn-view">View Card</button>
+            <button class="btn-view" (click)="viewCard(card)">View Card</button>
         </div>
     </div>
 }

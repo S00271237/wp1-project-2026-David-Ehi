@@ -13,4 +13,8 @@ export class ResultsAPI {
   constructor() {
     this._ResultsAPI.getCards();
   }
+
+  viewCard(card: any) {
+    window.location.href = `/details?id=${card.id}`;
+  }
 }

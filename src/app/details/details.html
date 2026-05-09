@@ -1,1 +1,53 @@
-<p>details works!</p>
+<div class="card-details">
+    <div class="card-image">
+        <img [src]="cardapi.cards()[0].card_images[0].image_url" [alt]="cardapi.cards()[0].name" />
+    </div>
+
+    <div class="card-info">
+        <h2 class="card-name">{{ cardapi.cards()[0].name }}</h2>
+
+    <div class="card-badges">
+        <span class="badge">{{ cardapi.cards()[0].type }}</span>
+        <span class="badge">{{ cardapi.cards()[0].race }}</span>
+        <span class="badge">{{ cardapi.cards()[0].attribute }}</span>
+    </div>
+
+@if (cardapi.cards()[0].atk !== undefined) {
+    <div class="card-stats">
+        <div class="stat">
+        <span class="stat-label">ATK</span>
+        <span class="stat-value">{{ cardapi.cards()[0].atk }}</span>
+        </div>
+        <div class="stat">
+        <span class="stat-label">DEF</span>
+        <span class="stat-value">{{ cardapi.cards()[0].def }}</span>
+        </div>
+        <div class="stat">
+        <span class="stat-label">Level</span>
+        <span class="stat-value">{{ cardapi.cards()[0].level }}</span>
+        </div>
+    </div>
+}
+
+
+    <div class="card-desc">
+        <h5>Description</h5>
+        <p>{{ cardapi.cards()[0].desc }}</p>
+    </div>
+
+    <div class="card-sets">
+        <h5>Sets</h5>
+        <ul>
+        @for (set of cardapi.cards()[0].card_sets; track $index) {
+            <li>{{ set.set_name }} - {{ set.set_rarity }}</li>
+        }
+        </ul>
+    </div>
+
+    <div class="card-actions d-flex gap-3">
+    <button class="btn-save">Save to Deck</button>
+    <button class="btn-back" routerLink="/">Back</button>
+    </div>
+
+    </div>
+</div>
